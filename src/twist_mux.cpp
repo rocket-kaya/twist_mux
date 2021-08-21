@@ -85,7 +85,7 @@ void TwistMux::init()
 
   /// Publisher for output topic:
   cmd_pub_ =
-    this->create_publisher<geometry_msgs::msg::Twist>(
+    this->create_publisher<geometry_msgs::msg::TwistStamped>(
     "cmd_vel_out",
     rclcpp::QoS(rclcpp::KeepLast(1)));
 
@@ -107,7 +107,7 @@ void TwistMux::updateDiagnostics()
   diagnostics_->updateStatus(status_);
 }
 
-void TwistMux::publishTwist(const geometry_msgs::msg::Twist::ConstSharedPtr & msg)
+void TwistMux::publishTwist(const geometry_msgs::msg::TwistStamped::ConstSharedPtr & msg)
 {
   cmd_pub_->publish(*msg);
 }
